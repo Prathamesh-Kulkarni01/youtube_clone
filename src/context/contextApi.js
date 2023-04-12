@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { fatchDataFromAPI } from "../utils/api";
+import { fetchDataFromAPI } from "../utils/api";
 
 export const Context=createContext()
 
@@ -11,13 +11,13 @@ export const AppContext=({children})=>{
 const [mobileMenu, setMobileMenu] = useState(false)
 
 useEffect(() => {
-    fatchSelectedCategoryData(selectCategories)
+    fetchSelectedCategoryData(selectCategories)
 }, [selectCategories])
 
 
- const fatchSelectedCategoryData=(query)=>{
+ const fetchSelectedCategoryData=(query)=>{
 setLoading(true)
-fatchDataFromAPI(`search/?q=${query}`).then(({contents})=>{
+fetchDataFromAPI(`search/?q=${query}`).then(({contents})=>{
     console.log(contents);
     setSearchResult(contents)
 setLoading(false)
